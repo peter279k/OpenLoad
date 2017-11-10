@@ -33,5 +33,12 @@ class FileInfoBuilderTest extends \PHPUnit_Framework_TestCase
         $data     = json_decode($this->fixture, true);
         $fileInfo = FileInfoBuilder::buildFileInfo($data);
         $this->assertInstanceOf('Ideneal\OpenLoad\Entity\FileInfo', $fileInfo);
+        $this->assertEquals('72fA-_Lq8Ak3', $fileInfo->getId());
+        $this->assertEquals('200', $fileInfo->getStatus());
+        $this->assertEquals('The quick brown fox.txt', $fileInfo->getName());
+        $this->assertEquals(123456789012, $fileInfo->getSize());
+        $this->assertEquals('2fd4e1c67a2d28fced849ee1bb76e7391b93eb12', $fileInfo->getSha1());
+        $this->assertEquals('plain/text', $fileInfo->getContentType());
+        $this->assertEquals(json_encode($data), $fileInfo);
     }
 }

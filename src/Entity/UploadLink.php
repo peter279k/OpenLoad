@@ -24,6 +24,16 @@ class UploadLink extends AbstractLink
     private $expirationDate;
 
     /**
+     * @var array The upload link information
+     */
+    private $data;
+    
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
+    /**
      * Returns the expiration date
      *
      * @return \DateTime
@@ -44,5 +54,15 @@ class UploadLink extends AbstractLink
     {
         $this->expirationDate = $expirationDate;
         return $this;
+    }
+
+    /**
+     * To string method
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return json_encode($this->data);
     }
 }

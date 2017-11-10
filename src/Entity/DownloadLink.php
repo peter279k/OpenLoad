@@ -49,6 +49,16 @@ class DownloadLink extends AbstractLink
     private $token;
 
     /**
+     * @var array The download link information
+     */
+    private $data;
+
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
+    /**
      * Returns the name of the file to download
      *
      * @return string
@@ -184,5 +194,15 @@ class DownloadLink extends AbstractLink
     {
         $this->token = $token;
         return $this;
+    }
+
+    /**
+     * To string method
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return json_encode($this->data);
     }
 }

@@ -30,7 +30,7 @@ class LinkBuilder extends AbstractBuilder
      */
     public static function buildDownloadLink(array $data)
     {
-        $downloadLink = new DownloadLink();
+        $downloadLink = new DownloadLink($data);
         $downloadLink
             ->setName($data['name'])
             ->setSize($data['size'])
@@ -52,7 +52,7 @@ class LinkBuilder extends AbstractBuilder
      */
     public static function buildUploadLink(array $data)
     {
-        $uploadLink = new UploadLink();
+        $uploadLink = new UploadLink($data);
         $uploadLink
             ->setUrl($data['url'])
             ->setExpirationDate(static::buildDate($data['valid_until']));

@@ -34,6 +34,11 @@ class TicketBuilderTest extends \PHPUnit_Framework_TestCase
         $data   = json_decode($this->fixture, true);
         $ticket = TicketBuilder::buildTicket($data);
         $this->assertInstanceOf('Ideneal\OpenLoad\Entity\Ticket', $ticket);
+        $this->assertEquals('72fA-_Lq8Ak~~1440353112~n~~0~nXtN3RI-nsEa28Iq', $ticket->getCode());
+        $this->assertInstanceOf('Ideneal\OpenLoad\Entity\Captcha', $ticket->getCaptcha());
+        $this->assertEquals(10, $ticket->getWaitTime());
+        $this->assertInstanceOf('\DateTime', $ticket->getExpirationDate());
+        $this->assertEquals(json_encode($data), $ticket->__toString());
     }
 
     /**
@@ -44,5 +49,8 @@ class TicketBuilderTest extends \PHPUnit_Framework_TestCase
         $data    = json_decode($this->fixture, true);
         $captcha = CaptchaBuilder::buildCaptcha($data['captcha_url'], $data['captcha_w'], $data['captcha_h']);
         $this->assertInstanceOf('Ideneal\OpenLoad\Entity\Captcha', $captcha);
+        $this->assertEquals('https://openload.co/dlcaptcha/b92eY_nfjV4.png', $captcha->getUrl());
+        $this->assertEquals(140, $captcha->getWidth());
+        $this->assertEquals(70, $captcha->getHeight());
     }
 }

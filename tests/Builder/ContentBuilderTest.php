@@ -48,5 +48,17 @@ class ContentBuilderTest extends \PHPUnit_Framework_TestCase
         $data = json_decode($this->fileFixture, true);
         $file = ContentBuilder::buildFile($data);
         $this->assertInstanceOf('Ideneal\OpenLoad\Entity\File', $file);
+        $this->assertEquals('c6531f5ce9669d6547023d92aea4805b7c45d133', $file->getSha1());
+        $this->assertEquals('4258', $file->getFolderId());
+        $this->assertInstanceOf('\DateTime', $file->getUploadDate());
+        $this->assertEquals('active', $file->getStatus());
+        $this->assertEquals('5114011', $file->getSize());
+        $this->assertEquals('video/mp4', $file->getContentType());
+        $this->assertEquals('48', $file->getDownloadCount());
+        $this->assertEquals('ok', $file->getConversionStatus());
+        $this->assertEquals('UPPjeAk--30', $file->getId());
+        $this->assertEquals('big_buck_bunny.mp4.mp4', $file->getName());
+        $this->assertEquals(json_encode($data), $file);
+        $this->assertEquals('https://openload.co/f/UPPjeAk--30/big_buck_bunny.mp4.mp4', $file->getUrl());
     }
 }

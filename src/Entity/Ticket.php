@@ -39,9 +39,14 @@ class Ticket
     private $expirationDate;
 
     /**
-     * @var string The file id related to the ticket
+     * @var array The ticket data
      */
-    private $fileId;
+    private $data;
+
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
 
     /**
      * Returns the ticket code
@@ -81,16 +86,6 @@ class Ticket
     public function getExpirationDate()
     {
         return $this->expirationDate;
-    }
-
-    /**
-     * Returns the file id related to the ticket
-     *
-     * @return string
-     */
-    public function getFileId()
-    {
-        return $this->fileId;
     }
 
     /**
@@ -146,25 +141,12 @@ class Ticket
     }
 
     /**
-     * Sets the file id related to the ticket
-     *
-     * @param string $fileId The file id
-     *
-     * @return $this
-     */
-    public function setFileId($fileId)
-    {
-        $this->fileId = $fileId;
-        return $this;
-    }
-
-    /**
      * To string method
      *
      * @return string
      */
     public function __toString()
     {
-        return $this->code;
+        return json_encode($this->data);
     }
 }

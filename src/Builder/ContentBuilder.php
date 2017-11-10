@@ -49,10 +49,11 @@ class ContentBuilder extends AbstractBuilder
     {
         $uploadDate = (new \DateTime())->setTimestamp($data['upload_at']);
 
-        $file = new File();
+        $file = new File($data);
         $file
             ->setId($data['linkextid'])
             ->setName($data['name'])
+            ->setSha1($data['sha1'])
             ->setFolderId($data['folderid'])
             ->setUploadDate($uploadDate)
             ->setStatus($data['status'])

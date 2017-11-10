@@ -29,7 +29,7 @@ class TicketBuilder extends AbstractBuilder
      */
     public static function buildTicket(array $data)
     {
-        $ticket  = new Ticket();
+        $ticket  = new Ticket($data);
         $captcha = CaptchaBuilder::buildCaptcha($data['captcha_url'], $data['captcha_w'], $data['captcha_h']);
 
         $ticket

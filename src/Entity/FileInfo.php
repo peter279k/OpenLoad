@@ -49,6 +49,16 @@ class FileInfo
     private $contentType;
 
     /**
+     * @var array The file information data
+     */
+    private $data;
+
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
+    /**
      * Returns the file id
      *
      * @return string
@@ -193,6 +203,6 @@ class FileInfo
      */
     public function __toString()
     {
-        return $this->id;
+        return json_encode($this->data);
     }
 }

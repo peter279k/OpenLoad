@@ -29,7 +29,7 @@ class FileInfoBuilder extends AbstractBuilder
      */
     public static function buildFileInfo(array $data)
     {
-        $fileInfo = new FileInfo();
+        $fileInfo = new FileInfo($data);
         $fileInfo
             ->setId($data['id'])
             ->setStatus($data['status'])
