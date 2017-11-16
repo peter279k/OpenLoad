@@ -49,7 +49,7 @@ class ContentBuilder extends AbstractBuilder
     {
         $uploadDate = (new \DateTime())->setTimestamp($data['upload_at']);
 
-        $file = new File($data);
+        $file = new File();
         $file
             ->setId($data['linkextid'])
             ->setName($data['name'])

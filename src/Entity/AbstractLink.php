@@ -45,4 +45,14 @@ class AbstractLink
         $this->url = $url;
         return $this;
     }
+
+    /**
+     * To string method
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->url;
+    }
 }

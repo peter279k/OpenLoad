@@ -64,16 +64,6 @@ class File extends AbstractContent
     private $url;
 
     /**
-     * @var string The file information
-     */
-    private $data;
-
-    public function __construct($data)
-    {
-        $this->data = $data;
-    }
-
-    /**
      * Returns the file sha1
      *
      * @return string
@@ -278,15 +268,5 @@ class File extends AbstractContent
     {
         $this->url = $url;
         return $this;
-    }
-
-    /**
-     * To string method
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return json_encode($this->data);
     }
 }

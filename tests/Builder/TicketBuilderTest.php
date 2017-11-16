@@ -13,6 +13,7 @@ namespace Ideneal\OpenLoad\Test\Builder;
 
 use Ideneal\OpenLoad\Builder\CaptchaBuilder;
 use Ideneal\OpenLoad\Builder\TicketBuilder;
+use Ideneal\OpenLoad\Entity\Ticket;
 
 /**
  * TicketBuilderTest
@@ -38,7 +39,6 @@ class TicketBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Ideneal\OpenLoad\Entity\Captcha', $ticket->getCaptcha());
         $this->assertEquals(10, $ticket->getWaitTime());
         $this->assertInstanceOf('\DateTime', $ticket->getExpirationDate());
-        $this->assertEquals(json_encode($data), $ticket->__toString());
     }
 
     /**
@@ -52,5 +52,25 @@ class TicketBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('https://openload.co/dlcaptcha/b92eY_nfjV4.png', $captcha->getUrl());
         $this->assertEquals(140, $captcha->getWidth());
         $this->assertEquals(70, $captcha->getHeight());
+    }
+
+    /**
+     * Tests the Ticket should return the file id
+     */
+    public function testTicketReturnFileId()
+    {
+        $ticket = new Ticket();
+        $ticket->setFileId('4248');
+        $this->assertEquals('4248', $ticket->getFileId());
+    }
+
+    /**
+     * Tests the Ticket should return the ticket code
+     */
+    public function testTicketReturnTicketCode()
+    {
+        $ticket = new Ticket();
+        $ticket->setCode('72fA-_Lq8Ak~~1440353112~n~~0~nXtN3RI-nsEa28Iq');
+        $this->assertEquals('72fA-_Lq8Ak~~1440353112~n~~0~nXtN3RI-nsEa28Iq', $ticket);    
     }
 }

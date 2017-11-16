@@ -225,8 +225,6 @@ class OpenLoadClient
             $params['folder'] = (string) $folder;
         }
 
-        array_key_exists('headers', $params) ? : $params['headers'] = '';
-
         foreach ($headers as $name => $header) {
             $params['headers'] .= $name.": ".$header."\n";
         }
@@ -519,7 +517,7 @@ class OpenLoadClient
     public function uploadFile($fileName, $folder = null, $httpOnly = false)
     {
         if (!file_exists($fileName)) {
-            throw new \InvalidArgumentException('The'.$fileName.'is not found!');
+            throw new \InvalidArgumentException('The'.$fileName.'does not exist.');
         }
 
         $file = fopen($fileName, 'r');

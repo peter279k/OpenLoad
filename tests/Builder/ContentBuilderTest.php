@@ -12,6 +12,7 @@
 namespace Ideneal\OpenLoad\Test\Builder;
 
 use Ideneal\OpenLoad\Builder\ContentBuilder;
+use Ideneal\OpenLoad\Entity\File;
 
 /**
  * ContentBuilderTest
@@ -58,7 +59,16 @@ class ContentBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('ok', $file->getConversionStatus());
         $this->assertEquals('UPPjeAk--30', $file->getId());
         $this->assertEquals('big_buck_bunny.mp4.mp4', $file->getName());
-        $this->assertEquals(json_encode($data), $file);
         $this->assertEquals('https://openload.co/f/UPPjeAk--30/big_buck_bunny.mp4.mp4', $file->getUrl());
+    }
+
+    /**
+     * Tests the File should return the id
+     */
+    public function testFileReturnFileId()
+    {
+        $file = new File();
+        $file->setId('UPPjeAk--30');
+        $this->assertEquals('UPPjeAk--30', $file);
     }
 }

@@ -73,4 +73,14 @@ abstract class AbstractContent
         $this->name = $name;
         return $this;
     }
+
+    /**
+     * To string method
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->id;
+    }
 }

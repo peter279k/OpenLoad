@@ -12,6 +12,7 @@
 namespace Ideneal\OpenLoad\Test\Builder;
 
 use Ideneal\OpenLoad\Builder\RemoteUploadBuilder;
+use Ideneal\OpenLoad\Entity\RemoteUpload;
 
 /**
  * RemoteUploadBuilderTest
@@ -58,5 +59,15 @@ class RemoteUploadBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\DateTime', $status->getLastUpdateDate());
         $this->assertFalse($status->getFileId());
         $this->assertFalse($status->getUrl());
+    }
+
+    /**
+     * Tests the RemoteUpload should return the upload id
+     */
+    public function testRemoteUploadReturnUploadId()
+    {
+        $upload = new RemoteUpload();
+        $upload->setId('4248');
+        $this->assertEquals('4248', $upload->getId());
     }
 }
