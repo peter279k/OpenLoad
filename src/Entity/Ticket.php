@@ -39,7 +39,7 @@ class Ticket
     private $expirationDate;
 
     /**
-     * @var array string The file id related to the ticket
+     * @var string The file id related to the ticket
      */
     private $fileId;
 
